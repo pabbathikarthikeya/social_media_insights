@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 600px;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        .controls button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background-color: #0077b5;
+            color: white;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background-color: #005582;
+        }
+
+        .back-button {
+            margin-top: 40px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0077b5;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #005582;
+        }
+    </style>
+</head>
+<body>
+    <h2>Best Time to Post on LinkedIn</h2>
+    <div class="gallery">
+        <img src="{{ url_for('static', filename='images/instagramheatmap.png') }}" alt="Heatmap" onclick="openLightbox(0)">
+        <img src="{{ url_for('static', filename='images/instagramlineplot.png') }}" alt="Line Chart" onclick="openLightbox(1)">
+        <img src="{{ url_for('static', filename='images/instagramscatterplot.png') }}" alt="Scatter Plot" onclick="openLightbox(2)">
+        
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <img id="lightboxImage" src="" alt="Slideshow">
+        <div class="controls">
+            <button onclick="prevImage()">Previous</button>
+            <button onclick="closeLightbox()">Close</button>
+            <button onclick="nextImage()">Next</button>
+        </div>
+    </div>
+
+    <a href="/select" class="back-button">Back</a>
+
+    <script>
+        const images = [
+            "{{ url_for('static', filename='images/instagramheatmap.png') }}",
+            "{{ url_for('static', filename='images/instagramlineplot.png') }}",
+            "{{ url_for('static', filename='images/instagramscatterplot.png') }}",
+            
+        ];
+
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            document.getElementById('lightbox').style.display = 'flex';
+            updateImage();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function updateImage() {
+            document.getElementById('lightboxImage').src = images[currentIndex];
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        }
+    </script>
+</body>
+</html>

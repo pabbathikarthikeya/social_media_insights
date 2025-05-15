@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Best Time to Post</title>
+    <style>
+        body {
+            background: url("{{ url_for('static', filename='images/background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 25px;
+        }
+
+        .button {
+            padding: 12px 26px;
+            font-size: 1.1em;
+            color: white;
+            background-color: #0077b5;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #005582;
+        }
+    </style>
+</head>
+<body>
+    <h1>Know your best time to post on LinkedIn</h1>
+    <form action="/select">
+        <button class="button">Click Here</button>
+    </form>
+</body>
+</html>

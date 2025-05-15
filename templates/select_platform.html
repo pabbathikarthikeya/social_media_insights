@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Platform</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #cce2f7, #e0f7fa);
+            background-size: cover;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        select, button {
+            font-size: 16px;
+            padding: 8px 12px;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-left: 10px;
+            background-color: #0077b5;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005582;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select your social media platform</h2>
+        <form action="/platform" method="post">
+            <select name="platform" required>
+                <option value="" disabled selected>Choose option</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Twitter">Twitter</option>
+                <!-- Add more platforms as needed -->
+            </select>
+            <button type="submit">Go</button>
+        </form>
+    </div>
+</body>
+</html>
